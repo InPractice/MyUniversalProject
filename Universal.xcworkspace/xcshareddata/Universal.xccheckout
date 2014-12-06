@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>01C558FA-9DF7-4B90-8363-0E1F01028907</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Universal</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8AD008CDFBA310F9C0767717E9FDA6AE2E32D796</key>
+		<string>ssh://github.com/InPractice/MyUniversalProject.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Universal.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8AD008CDFBA310F9C0767717E9FDA6AE2E32D796</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/InPractice/MyUniversalProject.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8AD008CDFBA310F9C0767717E9FDA6AE2E32D796</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8AD008CDFBA310F9C0767717E9FDA6AE2E32D796</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MyUniversalProject</string>
+		</dict>
+	</array>
+</dict>
+</plist>
