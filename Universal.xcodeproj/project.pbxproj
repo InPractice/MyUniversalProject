@@ -12,6 +12,7 @@
 		C63FC2B51A2EF9ED0071E38C /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2B41A2EF9ED0071E38C /* UserInfo.m */; };
 		C63FC2C41A30024C0071E38C /* UnInputListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2C31A30024C0071E38C /* UnInputListVC.m */; };
 		C63FC2CC1A3002910071E38C /* AlreadyInputListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C63FC2CB1A3002910071E38C /* AlreadyInputListVC.m */; };
+		C64231DB1A329CC9007C40BC /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = C64231DA1A329CC9007C40BC /* README.md */; };
 		C65B6C621A31A03400E7C8BB /* AlreadyInputXmlModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C65B6C611A31A03400E7C8BB /* AlreadyInputXmlModel.m */; };
 		C6664E451A30A64800F96FCC /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C6664E441A30A64800F96FCC /* Utilities.m */; };
 		C6664E481A30B32B00F96FCC /* HttpParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C6664E471A30B32B00F96FCC /* HttpParser.m */; };
@@ -60,6 +61,7 @@
 		C63FC2C31A30024C0071E38C /* UnInputListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnInputListVC.m; sourceTree = "<group>"; };
 		C63FC2CA1A3002910071E38C /* AlreadyInputListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlreadyInputListVC.h; sourceTree = "<group>"; };
 		C63FC2CB1A3002910071E38C /* AlreadyInputListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlreadyInputListVC.m; sourceTree = "<group>"; };
+		C64231DA1A329CC9007C40BC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C65B6C601A31A03400E7C8BB /* AlreadyInputXmlModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlreadyInputXmlModel.h; sourceTree = "<group>"; };
 		C65B6C611A31A03400E7C8BB /* AlreadyInputXmlModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlreadyInputXmlModel.m; sourceTree = "<group>"; };
 		C6664E431A30A64800F96FCC /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		C6691CCC1A27375100A0897E = {
 			isa = PBXGroup;
 			children = (
+				C64231DA1A329CC9007C40BC /* README.md */,
 				C6691CD71A27375100A0897E /* Universal */,
 				C6691CF11A27375100A0897E /* UniversalTests */,
 				C6691CD61A27375100A0897E /* Products */,
@@ -557,6 +560,7 @@
 				C6DFEA5B1A285F34007B4222 /* Foundation+Category.m in Sources */,
 				C6DFEA581A285F19007B4222 /* UIkit+Category.m in Sources */,
 				C63BB2261A3066B900B0D920 /* ServiceManager.m in Sources */,
+				C64231DB1A329CC9007C40BC /* README.md in Sources */,
 				C6DFEA6F1A2868E7007B4222 /* XMPPCoreDataStorage.m in Sources */,
 				C6DFEA891A2874E0007B4222 /* UserInfoCoreDataStorage.m in Sources */,
 				C63FC2B51A2EF9ED0071E38C /* UserInfo.m in Sources */,
