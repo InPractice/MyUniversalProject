@@ -40,10 +40,8 @@ static ServiceManager *shareInstance;
     self = [super init];
     if (self) {
         _httpSessionManager = [AFHTTPSessionManager manager];
-//        _httpSessionManager.responseSerializer = [AFXMLParserResponseSerializer serializer];
-//        .acceptableContentTypes = [[NSSet alloc] initWithObjects:@"application/xml", @"text/xml", nil];
-//        _httpSessionManager.requestSerializer. = [[NSSet alloc] initWithObjects:@"application/xml", @"text/xml", nil];
-//        _httpSessionManager.baseURL = [NSURL URLWithString:<#(NSString *)#>]
+        
+        
     }
     return self;
 }
@@ -51,9 +49,43 @@ static ServiceManager *shareInstance;
 
 
 
-- (void)GETUrlString:(NSString *)urlString Target:(id)target Selector:(SEL)selector NotificationNameTag:(HttpRequestTag)notificationNameTag
+
+- (void)GET_XML_UrlString:(NSString *)urlString Target:(id)target Selector:(SEL)selector NotificationNameTag:(HttpRequestTag)notificationNameTag
 {
-    NSString *completeUrlString  =  @"http://soufunapp.3g.soufun.com/http/sfservice.jsp?city=%E5%8C%97%E4%BA%AC&district=%E6%9C%9D%E9%98%B3&gettype=android&housetype=wt&messagename=esflist&oderby=25&page=1&pagesize=20&wirelesscode=3AF532418B0CE711AF7F2114564F6816";//[NSString stringWithFormat:@"%@%@",KINTERFACE_ADDRESS_FOREGROUND,urlString];
+    _httpSessionManager.responseSerializer = [AFXMLParserResponseSerializer serializer];
+    [self GETUrlString:urlString Target:target Selector:selector NotificationNameTag:notificationNameTag isJson:NO];
+}
+- (void)POS_XML_TUrlString:(NSString *)urlString parameters:(id)parameters Target:(id)target Selector:(SEL)selector NotificationName:(NSInteger)notificationNameTag
+{
+    _httpSessionManager.responseSerializer = [AFXMLParserResponseSerializer serializer];
+    [self POSTUrlString:urlString parameters:parameters Target:target Selector:selector NotificationName:notificationNameTag isJson:NO];
+}
+
+
+
+- (void)GET_JSON_UrlString:(NSString *)urlString Target:(id)target Selector:(SEL)selector NotificationNameTag:(HttpRequestTag)notificationNameTag
+{
+    _httpSessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [self GETUrlString:urlString Target:target Selector:selector NotificationNameTag:notificationNameTag isJson:YES];
+}
+- (void)POS_JSON_TUrlString:(NSString *)urlString parameters:(id)parameters Target:(id)target Selector:(SEL)selector NotificationName:(NSInteger)notificationNameTag
+{
+    _httpSessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [self POSTUrlString:urlString parameters:parameters Target:target Selector:selector NotificationName:notificationNameTag isJson:YES];
+}
+
+
+
+
+
+
+- (void)GETUrlString:(NSString *)urlString Target:(id)target Selector:(SEL)selector NotificationNameTag:(HttpRequestTag)notificationNameTag isJson:(BOOL)isJson
+{
+    NSString *baseUrl = KINTERFACE_ADDRESS_FOREGROUND_XML;
+    if (isJson) {
+        baseUrl = KINTERFACE_ADDRESS_FOREGROUND_JSON;
+    }
+    NSString *completeUrlString  =  [NSString stringWithFormat:@"%@%@",baseUrl,urlString];
     
     
     //移除通知监听
@@ -68,8 +100,11 @@ static ServiceManager *shareInstance;
         switch (notificationNameTag) {
             case HttpRequestTag_First:
             {
-//                sender = [HttpParser parseSearchListWithJson:responseObject modelClass:@"AlreadyInputModel"];
-                sender = [HttpParser parseSearchListWithXml:responseObject modelClass:@"AlreadyInputModel"];
+                if (isJson) {
+                    sender = [HttpParser parseSearchListWithJson:responseObject modelClass:@"AlreadyInputModel"];
+                }else{
+                    sender = [HttpParser parseSearchListWithXml:responseObject modelClass:@"AlreadyInputModel"];
+                }
             }
                 break;
                 
@@ -86,9 +121,9 @@ static ServiceManager *shareInstance;
     
 }
 
-- (void)POSTUrlString:(NSString *)urlString parameters:(id)parameters Target:(id)target Selector:(SEL)selector NotificationName:(NSInteger)notificationNameTag
+- (void)POSTUrlString:(NSString *)urlString parameters:(id)parameters Target:(id)target Selector:(SEL)selector NotificationName:(NSInteger)notificationNameTag isJson:(BOOL)isJson
 {
-    NSString *completeUrlString  =[NSString stringWithFormat:@"%@%@",KINTERFACE_ADDRESS_FOREGROUND,urlString];
+    NSString *completeUrlString  =[NSString stringWithFormat:@"%@%@",KINTERFACE_ADDRESS_FOREGROUND_JSON,urlString];
     
     //移除通知监听
     [[NSNotificationCenter defaultCenter] removeObserver:target name:[Utilities covertEnumToString:notificationNameTag] object:nil];
@@ -96,7 +131,23 @@ static ServiceManager *shareInstance;
     
     [_httpSessionManager POST:completeUrlString parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"成功了");
-        [[NSNotificationCenter defaultCenter]postNotificationName:[Utilities covertEnumToString:notificationNameTag] object:responseObject];;
+        
+        id sender = nil;
+        switch (notificationNameTag) {
+            case HttpRequestTag_First:
+            {
+                if (isJson) {
+                    sender = [HttpParser parseSearchListWithJson:responseObject modelClass:@"AlreadyInputModel"];
+                }else{
+                    sender = [HttpParser parseSearchListWithXml:responseObject modelClass:@"AlreadyInputModel"];
+                }
+            }
+                break;
+                
+            default:
+                break;
+        }
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"失败了");
         [[NSNotificationCenter defaultCenter]postNotificationName:[Utilities covertEnumToString:notificationNameTag] object:error];
